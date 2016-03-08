@@ -18,4 +18,5 @@ foreign import ccall ffi_closure_alloc :: CSize -> Ptr (Ptr CodeLoc) -> IO (Ptr 
 foreign import ccall ffi_closure_free :: Ptr FFI_Closure -> IO ()
 
 foreign import ccall ffi_prep_closure_loc :: Ptr FFI_Closure -> Ptr CIF ->
-                         Ptr () -> Ptr () -> Ptr CodeLoc -> IO C_ffi_status
+                         FunPtr (Ptr CIF -> Ptr () -> Ptr (Ptr ()) -> Ptr ()) ->
+                         Ptr () -> Ptr CodeLoc -> IO C_ffi_status
